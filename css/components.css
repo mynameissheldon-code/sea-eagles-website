@@ -136,10 +136,11 @@
   background-color: var(--color-navy);
   color: var(--color-white);
   font-family: var(--font-body);
-  font-size: 13px;
-  font-weight: 500;
-  letter-spacing: 0.3px;
-  border-radius: var(--radius-md);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  border-radius: 0;
   transition: background-color 0.3s var(--ease-out), transform 0.3s var(--ease-out);
 }
 
@@ -339,157 +340,297 @@
 }
 
 /* ============================================================
-   Hero
+   Hero — BMW-system dark band, split panel, no gradients
    ============================================================ */
 
 .hero {
-  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   min-height: 100vh;
-  display: flex;
-  align-items: flex-end;
-  padding: calc(var(--nav-height) + var(--space-12)) 0 var(--space-20);
+  background: var(--color-surface-dark);
+  position: relative;
   overflow: hidden;
 }
 
-.hero-bg {
-  position: absolute;
-  inset: 0;
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  z-index: 0;
-}
-
-.hero-bg::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    180deg,
-    rgba(6, 16, 31, 0.55) 0%,
-    rgba(6, 16, 31, 0.25) 30%,
-    rgba(6, 16, 31, 0.45) 70%,
-    var(--color-ivory) 100%
-  );
-}
-
-.hero-inner {
+.hero-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: calc(var(--nav-height) + var(--space-16)) var(--space-12) var(--space-16) var(--space-16);
   position: relative;
-  z-index: 1;
-  width: 100%;
-  display: grid;
-  gap: var(--space-12);
+  z-index: 2;
 }
 
 .hero-eyebrow {
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  gap: var(--space-3);
-  font-family: var(--font-body);
+  gap: 10px;
   font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 3px;
+  font-weight: 700;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.75);
-  margin-bottom: var(--space-5);
+  letter-spacing: 2.5px;
+  color: var(--color-teal);
+  margin-bottom: var(--space-6);
 }
 
 .hero-eyebrow::before {
   content: '';
-  width: 36px;
+  width: 28px;
   height: 1px;
-  background-color: var(--color-teal-light);
+  background: var(--color-teal);
+  flex-shrink: 0;
 }
 
 .hero h1 {
-  color: var(--color-white);
-  max-width: 18ch;
+  font-family: var(--font-display);
+  font-size: clamp(40px, 4.5vw, 62px);
+  font-weight: 700;
+  line-height: 1.03;
+  letter-spacing: -0.5px;
+  color: var(--color-on-dark);
+  margin-bottom: var(--space-5);
+}
+
+.hero h1 em {
+  font-style: italic;
+  color: var(--color-teal-accent);
 }
 
 .hero-sub {
-  color: rgba(255, 255, 255, 0.85);
-  font-size: clamp(16px, 1.4vw, 20px);
-  line-height: 1.6;
-  max-width: 55ch;
-  margin-top: var(--space-6);
+  font-size: 16px;
   font-weight: 300;
+  line-height: 1.7;
+  color: var(--color-on-dark-soft);
+  max-width: 420px;
+  margin-bottom: var(--space-10);
 }
 
 .hero-actions {
   display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-4);
-  margin-top: var(--space-8);
-}
-
-.hero-stats {
-  position: absolute;
-  right: var(--container-pad);
-  bottom: var(--space-20);
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: center;
   gap: var(--space-3);
-  z-index: 1;
-  max-width: 460px;
+  margin-bottom: var(--space-12);
 }
 
-.hero-stat {
-  background-color: rgba(255, 255, 255, 0.96);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-radius: var(--radius-lg);
-  padding: var(--space-5) var(--space-6);
-  box-shadow: var(--shadow-md);
-  border: 1px solid rgba(255, 255, 255, 0.6);
+/* BMW-style: 0px radius, uppercase, engineered precision */
+.btn-hero-primary {
+  padding: 14px 32px;
+  background: var(--color-teal);
+  color: var(--color-on-dark);
+  border: none;
+  border-radius: 0;
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: background 0.2s ease;
 }
 
-.hero-stat-num {
+.btn-hero-primary:hover {
+  background: var(--color-teal-light);
+}
+
+.btn-hero-ghost {
+  padding: 13px 31px;
+  background: transparent;
+  color: var(--color-on-dark);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 0;
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.btn-hero-ghost:hover {
+  border-color: rgba(255, 255, 255, 0.55);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* BMW spec-cell stat pattern */
+.hero-specs {
+  display: flex;
+  gap: 0;
+  padding-top: var(--space-8);
+  border-top: 1px solid var(--color-hairline-dark);
+}
+
+.spec-cell {
+  padding-right: var(--space-8);
+  margin-right: var(--space-8);
+  border-right: 1px solid var(--color-hairline-dark);
+}
+
+.spec-cell:last-child {
+  border-right: none;
+  padding-right: 0;
+  margin-right: 0;
+}
+
+.spec-val {
   font-family: var(--font-display);
-  font-size: 36px;
-  font-weight: 500;
-  color: var(--color-navy);
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--color-on-dark);
   line-height: 1;
-  letter-spacing: -0.5px;
+  margin-bottom: 4px;
 }
 
-.hero-stat-num span {
+.spec-val em {
+  font-style: normal;
+  color: var(--color-teal-accent);
+  font-size: 20px;
+}
+
+.spec-label {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.8px;
+  color: var(--color-on-dark-muted);
+}
+
+/* RIGHT: photo panel — no gradient, just the photo */
+.hero-right {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-photo {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.hero-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+/* Teal accent divider line — left edge of photo, BMW stripe principle */
+.hero-photo::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--color-teal);
+  z-index: 2;
+}
+
+/* Vessel name tag — BMW label-uppercase badge, bottom corner */
+.vessel-tag {
+  position: absolute;
+  bottom: var(--space-6);
+  right: var(--space-6);
+  background: rgba(11, 26, 46, 0.88);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding: 10px 18px;
+  z-index: 3;
+}
+
+.vessel-tag-label {
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--color-on-dark-muted);
+  margin-bottom: 3px;
+}
+
+.vessel-tag-name {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--color-on-dark);
+  letter-spacing: 0.3px;
+}
+
+/* Service pills strip — snaps page back to ivory immediately below hero */
+.hero-services-strip {
+  background: var(--color-ivory);
+  padding: var(--space-4) var(--space-16);
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  border-bottom: 1px solid var(--color-mist);
+  overflow-x: auto;
+}
+
+.strip-label {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--color-slate);
+  white-space: nowrap;
+  padding-right: var(--space-4);
+  border-right: 1px solid var(--color-mist);
+  flex-shrink: 0;
+}
+
+.strip-pills {
+  display: flex;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+.strip-pill {
+  padding: 6px 16px;
+  border: 1px solid var(--color-mist);
+  background: var(--color-white);
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--color-graphite);
+  border-radius: 0;
+  white-space: nowrap;
+  text-decoration: none;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.strip-pill:hover {
+  border-color: var(--color-teal-border);
   color: var(--color-teal);
 }
 
-.hero-stat-label {
-  display: block;
-  font-family: var(--font-body);
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  color: var(--color-slate);
-  margin-top: var(--space-2);
-}
-
-@media (max-width: 980px) {
-  .hero-stats {
-    position: relative;
-    right: auto;
-    bottom: auto;
-    margin-top: var(--space-10);
-    max-width: 100%;
-  }
-}
-
-@media (max-width: 540px) {
-  .hero-stats {
+@media (max-width: 900px) {
+  .hero {
     grid-template-columns: 1fr;
+    min-height: auto;
   }
-}
-
-/* Compact hero variant for inner pages */
-.hero-compact {
-  min-height: 70vh;
-}
-
-.hero-compact h1 {
-  font-size: clamp(40px, 5.5vw, 72px);
+  .hero-left {
+    padding: calc(var(--nav-height) + var(--space-10)) var(--space-6) var(--space-10);
+  }
+  .hero-right {
+    height: 340px;
+  }
+  .hero-photo::before {
+    left: 0; top: 0; right: 0; bottom: auto;
+    width: auto; height: 3px;
+  }
+  .hero-services-strip {
+    padding: var(--space-4) var(--space-6);
+  }
 }
 
 /* ============================================================

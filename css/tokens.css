@@ -28,6 +28,15 @@
   --color-teal-wash-strong: rgba(11, 165, 172, 0.10);
   --color-teal-border: rgba(11, 165, 172, 0.20);
 
+  /* Dark band / BMW-system surfaces */
+  --color-surface-dark:     #0B1A2E;
+  --color-surface-dark-mid: #1A2D47;
+  --color-on-dark:          #FFFFFF;
+  --color-on-dark-soft:     #BBBBBB;
+  --color-on-dark-muted:    #6B8099;
+  --color-teal-accent:      #0DC5CD;
+  --color-hairline-dark:    rgba(255, 255, 255, 0.10);
+
   /* Shadows */
   --shadow-sm:    0 1px 3px rgba(15, 29, 50, 0.04), 0 1px 2px rgba(15, 29, 50, 0.02);
   --shadow-md:    0 4px 16px rgba(15, 29, 50, 0.06), 0 1px 4px rgba(15, 29, 50, 0.04);
