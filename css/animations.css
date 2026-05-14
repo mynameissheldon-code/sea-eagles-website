@@ -1,0 +1,132 @@
+/* ============================================================
+   Animations — reveal keyframes, hover transitions, subtle motion
+   ============================================================ */
+
+/* ---------- Scroll-triggered reveal ---------- */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.7s var(--ease-out-soft),
+              transform 0.7s var(--ease-out-soft);
+  will-change: opacity, transform;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Staggered delays for sibling reveals */
+.reveal-stagger > * {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s var(--ease-out-soft),
+              transform 0.7s var(--ease-out-soft);
+}
+
+.reveal-stagger.is-visible > *:nth-child(1) {
+  transition-delay: 0s;
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-stagger.is-visible > *:nth-child(2) {
+  transition-delay: 0.08s;
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-stagger.is-visible > *:nth-child(3) {
+  transition-delay: 0.16s;
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-stagger.is-visible > *:nth-child(4) {
+  transition-delay: 0.24s;
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-stagger.is-visible > *:nth-child(5) {
+  transition-delay: 0.32s;
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-stagger.is-visible > *:nth-child(6) {
+  transition-delay: 0.4s;
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-stagger.is-visible > *:nth-child(n+7) {
+  transition-delay: 0.48s;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ---------- Hero entrance ---------- */
+
+.hero h1,
+.hero .hero-eyebrow,
+.hero .hero-sub,
+.hero .hero-actions,
+.hero .hero-stats {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: heroFade 1.2s var(--ease-out-soft) forwards;
+}
+
+.hero .hero-eyebrow { animation-delay: 0.15s; }
+.hero h1            { animation-delay: 0.25s; }
+.hero .hero-sub     { animation-delay: 0.45s; }
+.hero .hero-actions { animation-delay: 0.6s; }
+.hero .hero-stats   { animation-delay: 0.8s; }
+
+@keyframes heroFade {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ---------- Fleet filter transitions ---------- */
+
+.fleet-card {
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity 0.3s var(--ease-out),
+              transform 0.4s var(--ease-out-soft),
+              box-shadow 0.4s var(--ease-out-soft),
+              border-color 0.4s var(--ease-out-soft);
+}
+
+.fleet-card.is-hidden {
+  opacity: 0;
+  transform: scale(0.96);
+  pointer-events: none;
+  position: absolute;
+  visibility: hidden;
+}
+
+/* ---------- Subtle pulse for map markers ---------- */
+
+@keyframes mapPulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50%      { transform: scale(1.6); opacity: 0.4; }
+}
+
+.map-marker-pulse {
+  animation: mapPulse 2.5s ease-in-out infinite;
+}
+
+/* ---------- Reduce motion ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal { opacity: 1; transform: none; }
+  .reveal-stagger > * { opacity: 1; transform: none; }
+}
