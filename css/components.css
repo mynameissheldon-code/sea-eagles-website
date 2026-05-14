@@ -1914,3 +1914,111 @@
   font-weight: 500;
   letter-spacing: 0.5px;
 }
+
+/* ============================================================
+   D3 / TopoJSON world map (projects page)
+   ============================================================ */
+
+.world-map {
+  background: var(--color-surface-dark);
+  border-radius: var(--radius-lg);
+  padding: var(--space-10) var(--space-8) var(--space-8);
+  margin: var(--space-12) 0;
+}
+
+.map-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: var(--space-6);
+}
+
+.map-title {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--color-on-dark);
+  margin-top: var(--space-2);
+}
+
+.map-legend {
+  display: flex;
+  align-items: center;
+  gap: var(--space-5);
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--color-on-dark-muted);
+}
+
+.legend-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.legend-hub { background: var(--color-teal); }
+.legend-ops {
+  background: rgba(11, 165, 172, 0.3);
+  border: 1.5px solid var(--color-teal);
+}
+
+.map-canvas-wrap {
+  width: 100%;
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.06);
+}
+
+#world-map {
+  display: block;
+  width: 100%;
+}
+
+.map-regions {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-3);
+  margin-top: var(--space-5);
+}
+
+.map-region {
+  padding: 12px 14px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 6px;
+}
+
+.map-region-label {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--color-teal);
+  margin-bottom: 4px;
+}
+
+.map-region-name {
+  font-size: 13px;
+  color: var(--color-on-dark);
+  font-weight: 500;
+}
+
+.map-region-sub {
+  font-size: 11px;
+  color: var(--color-on-dark-muted);
+  margin-top: 2px;
+}
+
+@media (max-width: 768px) {
+  .map-regions { grid-template-columns: 1fr 1fr; }
+  .map-header { flex-direction: column; align-items: flex-start; gap: 12px; }
+}

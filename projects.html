@@ -24,6 +24,9 @@
 <link rel="stylesheet" href="css/base.css">
 <link rel="stylesheet" href="css/components.css">
 <link rel="stylesheet" href="css/animations.css">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/topojson-client@3/dist/topojson-client.min.js"></script>
 </head>
 
 <body>
@@ -168,63 +171,52 @@
       <p>Active vessel operations and agency presence across the Middle East, Africa, Asia and Europe.</p>
     </div>
     <div class="world-map reveal">
-      <svg viewBox="0 0 1000 500" role="img" aria-label="World map showing SES operating regions">
-        <!-- Simplified continental shapes -->
-        <g fill="#E8ECF2" stroke="#C8CED8" stroke-width="0.5">
-          <!-- North America -->
-          <path d="M50,120 L180,90 L230,80 L260,110 L270,160 L240,200 L210,230 L150,260 L100,250 L70,210 L50,170 Z"/>
-          <!-- South America -->
-          <path d="M200,280 L260,260 L290,290 L295,360 L260,430 L220,440 L195,400 L185,330 Z"/>
-          <!-- Europe -->
-          <path d="M440,90 L520,80 L555,90 L575,120 L555,145 L500,160 L460,150 L435,125 Z"/>
-          <!-- Africa -->
-          <path d="M450,170 L540,160 L580,200 L590,290 L560,360 L510,400 L470,380 L440,310 L435,230 Z"/>
-          <!-- Middle East / Arabian Peninsula -->
-          <path d="M580,180 L640,180 L660,220 L645,260 L605,275 L585,240 L575,210 Z"/>
-          <!-- Asia -->
-          <path d="M580,90 L740,80 L820,100 L850,140 L840,200 L780,230 L720,240 L670,210 L630,180 L600,150 Z"/>
-          <!-- SE Asia / Indonesia -->
-          <path d="M780,250 L860,250 L890,275 L870,310 L820,310 L790,290 Z"/>
-          <!-- Australia -->
-          <path d="M820,360 L900,355 L930,390 L900,420 L840,420 L815,395 Z"/>
-        </g>
+      <div class="map-header">
+        <div>
+          <div class="section-label">
+            <span class="section-label-dot"></span>
+            Global Operations
+          </div>
+          <h3 class="map-title">Active in 4 Regions</h3>
+        </div>
+        <div class="map-legend">
+          <div class="legend-item">
+            <span class="legend-dot legend-hub"></span>
+            <span>Hub</span>
+          </div>
+          <div class="legend-item">
+            <span class="legend-dot legend-ops"></span>
+            <span>Operations</span>
+          </div>
+        </div>
+      </div>
 
-        <!-- Operating region markers -->
-        <g>
-          <!-- UAE -->
-          <circle class="map-marker-pulse" cx="613" cy="218" r="6" fill="#0BA5AC" opacity="0.4"/>
-          <circle cx="613" cy="218" r="6" fill="#0BA5AC"/>
-          <text x="623" y="222" font-family="Outfit" font-size="11" font-weight="600" fill="#0F1D32">UAE · HQ</text>
+      <div class="map-canvas-wrap">
+        <svg id="world-map" aria-label="World map showing Sea Eagles Group operating regions"></svg>
+      </div>
 
-          <!-- Saudi Arabia -->
-          <circle class="map-marker-pulse" cx="600" cy="225" r="5" fill="#0BA5AC" opacity="0.4" style="animation-delay: 0.4s;"/>
-          <circle cx="600" cy="225" r="5" fill="#0BA5AC"/>
-
-          <!-- Bahrain -->
-          <circle class="map-marker-pulse" cx="606" cy="216" r="4" fill="#0BA5AC" opacity="0.4" style="animation-delay: 0.8s;"/>
-          <circle cx="606" cy="216" r="4" fill="#0BA5AC"/>
-
-          <!-- Singapore -->
-          <circle class="map-marker-pulse" cx="800" cy="270" r="5" fill="#0BA5AC" opacity="0.4" style="animation-delay: 1.2s;"/>
-          <circle cx="800" cy="270" r="5" fill="#0BA5AC"/>
-          <text x="810" y="274" font-family="Outfit" font-size="11" font-weight="600" fill="#0F1D32">Singapore</text>
-
-          <!-- Africa ops -->
-          <circle class="map-marker-pulse" cx="510" cy="290" r="5" fill="#0BA5AC" opacity="0.4" style="animation-delay: 1.6s;"/>
-          <circle cx="510" cy="290" r="5" fill="#0BA5AC"/>
-          <text x="520" y="294" font-family="Outfit" font-size="11" font-weight="600" fill="#0F1D32">Africa</text>
-
-          <!-- Europe -->
-          <circle class="map-marker-pulse" cx="510" cy="115" r="5" fill="#0BA5AC" opacity="0.4" style="animation-delay: 2s;"/>
-          <circle cx="510" cy="115" r="5" fill="#0BA5AC"/>
-          <text x="520" y="119" font-family="Outfit" font-size="11" font-weight="600" fill="#0F1D32">Europe</text>
-
-          <!-- Asia -->
-          <circle class="map-marker-pulse" cx="740" cy="170" r="5" fill="#0BA5AC" opacity="0.4" style="animation-delay: 2.4s;"/>
-          <circle cx="740" cy="170" r="5" fill="#0BA5AC"/>
-          <text x="750" y="174" font-family="Outfit" font-size="11" font-weight="600" fill="#0F1D32">Asia</text>
-        </g>
-      </svg>
+      <div class="map-regions">
+        <div class="map-region">
+          <div class="map-region-label">Middle East</div>
+          <div class="map-region-name">UAE · KSA · Bahrain</div>
+          <div class="map-region-sub">Headquarters</div>
+        </div>
+        <div class="map-region">
+          <div class="map-region-label">Asia Pacific</div>
+          <div class="map-region-name">Singapore</div>
+          <div class="map-region-sub">Regional Hub</div>
+        </div>
+        <div class="map-region">
+          <div class="map-region-label">Africa</div>
+          <div class="map-region-name">East · West Africa</div>
+          <div class="map-region-sub">Operations</div>
+        </div>
+        <div class="map-region">
+          <div class="map-region-label">Europe</div>
+          <div class="map-region-name">Northern Europe</div>
+          <div class="map-region-sub">Operations</div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
