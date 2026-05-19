@@ -158,7 +158,7 @@
       .datum({ type: 'LineString', coordinates: [hubCoord, [lon, lat]] })
       .attr('d', path)
       .attr('fill', 'none')
-      .attr('stroke', 'rgba(11,165,172,0.18)')
+      .attr('stroke', 'rgba(8,94,38,0.22)')
       .attr('stroke-width', 1)
       .attr('stroke-dasharray', '3,4');
   });
@@ -167,12 +167,13 @@
     const [x, y] = projection([lon, lat]);
     if (!x || !y) return;
 
+    const isHQ = label === 'Dubai, UAE';
     const r = type === 'hub' ? 6 : 4;
 
     const pulse = svg.append('circle')
       .attr('cx', x).attr('cy', y).attr('r', r)
       .attr('fill', 'none')
-      .attr('stroke', '#0BA5AC')
+      .attr('stroke', isHQ ? '#cf2625' : '#085e26')
       .attr('stroke-width', 1.5)
       .attr('opacity', 0.6);
 
@@ -187,8 +188,10 @@
     svg.append('circle')
       .attr('cx', x).attr('cy', y)
       .attr('r', type === 'hub' ? 5 : 3.5)
-      .attr('fill', type === 'hub' ? '#0BA5AC' : 'rgba(11,165,172,0.45)')
-      .attr('stroke', '#0DC5CD')
+      .attr('fill', isHQ
+        ? '#cf2625'
+        : (type === 'hub' ? '#085e26' : 'rgba(8,94,38,0.45)'))
+      .attr('stroke', isHQ ? '#e94646' : '#0a7030')
       .attr('stroke-width', type === 'hub' ? 1.5 : 1);
 
     svg.append('text')

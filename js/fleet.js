@@ -23,6 +23,7 @@
       gt: '463 GT',
       classification: 'Bureau Veritas',
       registry: 'Basseterre',
+      available: true,
       image: 'images/DJI_0053.JPG',
       blurb: 'Twin Z-drive ASD harbour tug with high bollard pull, full firefighting kit and offshore terminal experience.'
     },
@@ -40,6 +41,7 @@
       gt: '463 GT',
       classification: 'Bureau Veritas',
       registry: 'Basseterre',
+      available: true,
       image: 'images/DJI_0035.JPG',
       blurb: 'Sister-built ASD tug for port assist, escort and terminal mooring operations across the Arabian Gulf.'
     },
@@ -57,6 +59,7 @@
       gt: '57 GT',
       classification: 'Global Maritim Bureau',
       registry: 'Bamako',
+      available: false,
       image: 'images/DJI_0019.JPG',
       blurb: 'Compact workhorse tug for shallow-draft assist and short-haul towage where manoeuvrability matters more than speed.'
     },
@@ -74,6 +77,7 @@
       gt: '245 GT',
       classification: 'Bureau Veritas',
       registry: 'Bahrain',
+      available: true,
       image: 'images/DJI_0024.JPG',
       blurb: 'Fast aluminium-hull crew transfer vessel with offshore-rated security fendering, ideal for personnel and light cargo runs.'
     },
@@ -91,6 +95,7 @@
       gt: '245 GT',
       classification: 'Bureau Veritas',
       registry: 'Bahrain',
+      available: true,
       image: 'images/DJI_0023.JPG',
       blurb: 'High-speed crew boat configured for rotation transfers between shore base and offshore production fields.'
     },
@@ -108,6 +113,7 @@
       gt: '245 GT',
       classification: 'Bureau Veritas',
       registry: 'Kingstown',
+      available: true,
       image: 'images/DJI_0033.JPG',
       blurb: 'Fast crew transfer vessel built for sustained 21-knot cruises with security-grade fendering and dual-zone seating.'
     },
@@ -125,6 +131,7 @@
       gt: '294 GT',
       classification: 'Bureau Veritas',
       registry: 'Kingstown',
+      available: true,
       image: 'images/DJI_0070.JPG',
       blurb: 'Utility / supply vessel for platform support, cargo runs and offshore logistics with twin-engine reliability.'
     },
@@ -142,6 +149,7 @@
       gt: '46 GT',
       classification: 'Bureau Veritas',
       registry: 'Kingstown',
+      available: true,
       image: 'images/DJI_0010.JPG',
       blurb: 'Dedicated pilot transfer boat for harbour pilotage, fast deployment and crew change at anchorage.'
     },
@@ -159,6 +167,7 @@
       gt: '4,557 GT',
       classification: 'Bureau Veritas',
       registry: 'Basseterre',
+      available: true,
       image: 'images/DJI_0046.JPG',
       blurb: 'Newest addition to the fleet — a 96-metre oil tanker for regional bunkering and product transport, delivered 2025.'
     }
@@ -175,6 +184,9 @@
             <span class="fleet-card-type">${v.type}</span>
           </div>
           <div class="fleet-card-body">
+            ${v.available
+              ? '<span class="vessel-available">Available for Charter</span>'
+              : '<span class="vessel-unavailable">Currently Engaged</span>'}
             <h3>${v.name}</h3>
             <p>${v.blurb}</p>
             <div class="fleet-specs">

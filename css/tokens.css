@@ -21,12 +21,22 @@
   --color-navy:      #0F1D32;
   --color-deep-navy: #081525;
 
-  /* Brand Accent */
-  --color-teal:        #0BA5AC;
-  --color-teal-light:  #0DC5CD;
-  --color-teal-wash:   rgba(11, 165, 172, 0.06);
-  --color-teal-wash-strong: rgba(11, 165, 172, 0.10);
-  --color-teal-border: rgba(11, 165, 172, 0.20);
+  /* Brand Identity — primary green & red */
+  --color-brand-green:             #085e26;
+  --color-brand-green-light:       #0a7030;
+  --color-brand-green-wash:        rgba(8, 94, 38, 0.06);
+  --color-brand-green-wash-strong: rgba(8, 94, 38, 0.10);
+  --color-brand-green-border:      rgba(8, 94, 38, 0.20);
+
+  --color-brand-red:               #cf2625;
+  --color-brand-red-wash:          rgba(207, 38, 37, 0.08);
+
+  /* Legacy teal aliases — now resolve to brand green so existing CSS adopts the brand identity without find-replace */
+  --color-teal:             var(--color-brand-green);
+  --color-teal-light:       var(--color-brand-green-light);
+  --color-teal-wash:        var(--color-brand-green-wash);
+  --color-teal-wash-strong: var(--color-brand-green-wash-strong);
+  --color-teal-border:      var(--color-brand-green-border);
 
   /* Dark band / BMW-system surfaces */
   --color-surface-dark:     #0B1A2E;
@@ -34,7 +44,7 @@
   --color-on-dark:          #FFFFFF;
   --color-on-dark-soft:     #BBBBBB;
   --color-on-dark-muted:    #6B8099;
-  --color-teal-accent:      #0DC5CD;
+  --color-teal-accent:      #4db870;
   --color-hairline-dark:    rgba(255, 255, 255, 0.10);
 
   /* Shadows */
