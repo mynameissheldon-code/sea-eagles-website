@@ -355,7 +355,15 @@
 
 .hero h1 em {
   font-style: italic;
-  color: var(--color-teal-accent);
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* Section headings on light backgrounds keep the italic-accent green */
+.section-heading em,
+h2 em,
+h3 em {
+  font-style: italic;
+  color: var(--color-brand-green);
 }
 
 .hero-sub {
